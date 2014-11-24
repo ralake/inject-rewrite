@@ -1,9 +1,29 @@
 require './lib/inject-rewrite'
 
-describe 'my_inject' do 
+describe 'Array' do 
 
-	it 'produces the same result as the inject method' do
+# Tests are taken from ruby docs
 
-	end
-	
+  it 'can find the longest word' do
+
+    def longest_my_inject
+      longest = %w{ cat sheep bear }.my_inject do |memo, word|
+        memo.length > word.length ? memo : word
+      end
+    end
+
+    def longest_real_inject
+      longest = %w{ cat sheep bear }.inject do |memo, word|
+        memo.length > word.length ? memo : word
+      end
+    end
+
+    expect(longest_my_inject).to eq(longest_real_inject)
+  end
+
+  it 'can Sum some numbers' do
+    a = [5, 6, 7, 8, 9, 10]
+    expect(a.my_inject(&:+)).to eq(a.inject(:+))
+  end
+  
 end
