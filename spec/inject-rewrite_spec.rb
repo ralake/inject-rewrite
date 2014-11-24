@@ -1,23 +1,23 @@
 require './lib/inject-rewrite'
 
+a = [5, 6, 7, 8, 9, 10]
+b = ["Makers", "Academy"]
+
+def longest_my_inject
+  longest = %w{ cat sheep bear }.my_inject do |memo, word|
+    memo.length > word.length ? memo : word
+  end
+end
+
+def longest_real_inject
+  longest = %w{ cat sheep bear }.inject do |memo, word|
+    memo.length > word.length ? memo : word
+  end
+end
+
 describe 'Array' do 
 
 # Tests are taken from ruby docs
-
-  a = [5, 6, 7, 8, 9, 10]
-  b = ["Makers", "Academy"]
-
-  def longest_my_inject
-    longest = %w{ cat sheep bear }.my_inject do |memo, word|
-      memo.length > word.length ? memo : word
-    end
-  end
-
-  def longest_real_inject
-    longest = %w{ cat sheep bear }.inject do |memo, word|
-      memo.length > word.length ? memo : word
-    end
-  end
 
   it 'can find the longest word' do
     expect(longest_my_inject).to eq(longest_real_inject)
