@@ -1,6 +1,6 @@
 Inject-rewrite
 ========
-Makers Academy Week 3 Challenge
+Makers Academy Week 2 Challenge
 
 Brief
 -----
