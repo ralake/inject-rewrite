@@ -2,18 +2,20 @@ class Array
 
   def my_inject(memo = nil, &block)
     if memo.nil? then memo = self.first
-      memo_is_nil(memo, &block)
+      without_initial_value(memo, &block)
     else
-      memo_not_nil(memo, &block)
+      with_initial_value(memo, &block)
     end
   end
 
-  def memo_is_nil(memo, &block)
+  private
+
+  def without_initial_value(memo, &block)
     self.drop(1).each { |item| memo = block.call(memo, item) }
     memo
   end
 
-  def memo_not_nil(memo, &block)
+  def with_initial_value(memo, &block)
     self.each { |item| memo = block.call(memo, item) }
     memo
   end
